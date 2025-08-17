@@ -7,7 +7,7 @@ Thank you for considering contributing to the Store Rating Website! This documen
 1. **Fork the repository** on GitHub
 2. **Clone your fork** locally:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/Store-Rating-Website.git
+   git clone https://github.com/Nithyananda2003/Store-Rating-Website.git
    cd Store-Rating-Website
    ```
 3. **Set up the development environment** following the README.md instructions
