@@ -1,6 +1,6 @@
 # Store Rating Application
 
-A full-stack web application for rating and reviewing stores, built with Next.js frontend and Node.js backend with SQLite database.
+A full-stack web application for rating and reviewing stores, built with Next.js frontend and Express.js backend with MySQL database.
 
 ## Features
 
@@ -31,7 +31,7 @@ A full-stack web application for rating and reviewing stores, built with Next.js
 ### Backend
 - **Node.js** - JavaScript runtime
 - **Express.js** - Web framework
-- **SQLite** - Lightweight database
+- **MySQL** - Relational database management system
 - **JWT** - Authentication tokens
 - **bcryptjs** - Password hashing
 - **CORS** - Cross-origin resource sharing
@@ -50,9 +50,9 @@ assignment2/
 │   ├── components/            # Reusable UI components
 │   ├── lib/                   # Utility functions
 │   └── package.json
-├── backend-folder/backend/     # Node.js backend application
+├── backend-folder/backend/     # Express.js backend application
 │   ├── server.js              # Main server file
-│   ├── store_rating_app.db    # SQLite database
+│   ├── database.sql           # MySQL database schema
 │   ├── package.json
 │   └── .env                   # Environment variables
 └── README.md
@@ -95,7 +95,10 @@ Create a `.env` file in the backend directory with the following content:
 ```env
 JWT_SECRET=your_super_secure_jwt_secret_key_here_12345
 PORT=3001
-DB_PATH=./store_rating_app.db
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=your_mysql_password
+DB_NAME=store_rating_app
 ```
 
 #### 2.4. Start Backend Server
@@ -354,7 +357,7 @@ Your Store Rating Application is now running with:
 
 ✅ **Frontend** - Modern Next.js interface  
 ✅ **Backend** - Robust Node.js API  
-✅ **Database** - SQLite with automatic creation  
+✅ **Database** - MySQL with relational structure
 ✅ **Authentication** - JWT-based security  
 ✅ **Admin Dashboard** - Real-time management panel  
 ✅ **Rating System** - Full CRUD operations  
@@ -370,7 +373,7 @@ This project **FULLY IMPLEMENTS** all requirements from the FullStack Intern Cod
 
 ### ✅ **Tech Stack Requirements**
 - **✓ Backend Framework**: Express.js (Node.js/Express)
-- **✓ Database**: SQLite (alternative to PostgreSQL/MySQL - lightweight & portable)
+- **✓ Database**: MySQL (relational database management system)
 - **✓ Frontend**: React.js (Next.js 14 - React framework)
 
 ### ✅ **Core Application Requirements**
@@ -542,7 +545,7 @@ CREATE TABLE ratings (
 |-------------|--------|------------------------|
 | Express.js Backend | ✅ **IMPLEMENTED** | Full REST API with Express.js |
 | React Frontend | ✅ **IMPLEMENTED** | Next.js 14 (React framework) |
-| PostgreSQL/MySQL | ✅ **ALTERNATIVE** | SQLite (portable & lightweight) |
+| PostgreSQL/MySQL | ✅ **IMPLEMENTED** | MySQL (relational database) |
 | User Registration | ✅ **IMPLEMENTED** | Complete signup with validation |
 | Role-based Access | ✅ **IMPLEMENTED** | 3 roles with different permissions |
 | Store Rating (1-5) | ✅ **IMPLEMENTED** | Star rating system with validation |
