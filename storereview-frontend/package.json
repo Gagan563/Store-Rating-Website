@@ -1,7 +1,9 @@
 {
-  "name": "my-v0-project",
-  "version": "0.1.0",
+  "name": "storereview-frontend",
+  "version": "1.0.0",
   "private": true,
+  "description": "Modern store rating and review application frontend",
+  "author": "Your Name",
   "scripts": {
     "build": "next build",
     "dev": "next dev",

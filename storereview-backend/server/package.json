@@ -1,15 +1,17 @@
 {
-  "name": "backend",
+  "name": "storereview-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Backend API server for store rating and review application",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "build": "echo 'No build step required'"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["express", "nodejs", "store-rating", "api", "sqlite"],
+  "author": "Your Name",
+  "license": "MIT",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",

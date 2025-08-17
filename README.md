@@ -1,23 +1,17 @@
-# Store Rating Application
+# StoreReview - Store Rating & Review Platform
 
-A full-stack web application for rating and reviewing stores, built with Next.js frontend and Express.js backend with MySQL database.
+A full-stack web application for rating and reviewing stores with role-based access control.
+
+**Built by [Your Name]** - Modern store rating platform with admin management and real-time features.
 
 ## Features
 
-### User Features
-- **User Registration & Authentication**: Secure signup and login with JWT tokens
-- **Store Discovery**: Browse and search through available stores
-- **Rating & Reviews**: Rate stores (1-5 stars) and leave detailed comments
-- **Personal Dashboard**: View and manage your submitted ratings
-- **Profile Management**: Update personal information
-
-### Admin Features
-- **Admin Dashboard**: Comprehensive overview with real-time statistics
-- **User Management**: View, add, edit, and manage all users
-- **Store Management**: Full CRUD operations for stores
-- **Rating Management**: Monitor and manage all ratings/reviews
-- **Real-time Updates**: Auto-refresh every 30 seconds + manual refresh
-- **Statistics Overview**: Total users, stores, ratings, and average ratings
+- **User Authentication**: Secure JWT-based login/registration
+- **Store Rating**: 1-5 star rating system with comments
+- **Role-Based Access**: Admin, Store Owner, and Normal User roles
+- **Admin Dashboard**: Real-time statistics and management panel
+- **User Management**: Complete user and store CRUD operations
+- **Responsive Design**: Modern UI with TypeScript and Tailwind CSS
 
 ## Tech Stack
 
@@ -31,7 +25,7 @@ A full-stack web application for rating and reviewing stores, built with Next.js
 ### Backend
 - **Node.js** - JavaScript runtime
 - **Express.js** - Web framework
-- **MySQL** - Relational database management system
+- **SQLite** - Lightweight relational database
 - **JWT** - Authentication tokens
 - **bcryptjs** - Password hashing
 - **CORS** - Cross-origin resource sharing
@@ -39,8 +33,8 @@ A full-stack web application for rating and reviewing stores, built with Next.js
 ## Project Structure
 
 ```
-assignment2/
-├── frontend/                    # Next.js frontend application
+StoreReview-Application/
+├── storereview-frontend/       # Next.js frontend application
 │   ├── app/                    # App router pages
 │   │   ├── admin/             # Admin dashboard
 │   │   ├── dashboard/         # User dashboard
@@ -50,115 +44,48 @@ assignment2/
 │   ├── components/            # Reusable UI components
 │   ├── lib/                   # Utility functions
 │   └── package.json
-├── backend-folder/backend/     # Express.js backend application
-│   ├── server.js              # Main server file
-│   ├── database.sql           # MySQL database schema
-│   ├── package.json
-│   └── .env                   # Environment variables
+├── storereview-backend/        # Express.js backend application
+│   └── server/                # Server directory
+│       ├── server.js          # Main server file
+│       ├── package.json       # Backend dependencies
+│       ├── .env               # Environment variables
+│       └── store_rating_app.db # SQLite database (auto-created)
 └── README.md
 ```
 
-## Prerequisites
+## Quick Start
 
-Before setting up the project, ensure you have the following installed:
+### Prerequisites
+- Node.js (v16+)
+- npm
 
-- **Node.js** (v16 or higher) - [Download](https://nodejs.org/)
-- **npm** (comes with Node.js)
-- **Git** (optional) - [Download](https://git-scm.com/)
+### Setup
 
-## Setup Instructions
+1. **Backend Setup**
+   ```bash
+   cd storereview-backend/server
+   npm install
+   node server.js
+   ```
 
-### 1. Clone or Download the Project
+2. **Frontend Setup** (New terminal)
+   ```bash
+   cd storereview-frontend
+   npm install
+   npm run dev
+   ```
 
-If using Git:
-```bash
-git clone <repository-url>
-cd assignment2
-```
+3. **Access Application**
+   - Frontend: http://localhost:3000
+   - Backend API: http://localhost:3001
 
-Or download the ZIP file and extract it to your desired location.
+## Demo Accounts
 
-### 2. Backend Setup
-
-#### 2.1. Navigate to Backend Directory
-```powershell
-cd "backend-folder\backend"
-```
-
-#### 2.2. Install Backend Dependencies
-```powershell
-npm install
-```
-
-#### 2.3. Create Environment File
-Create a `.env` file in the backend directory with the following content:
-```env
-JWT_SECRET=your_super_secure_jwt_secret_key_here_12345
-PORT=3001
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=your_mysql_password
-DB_NAME=store_rating_app
-```
-
-#### 2.4. Start Backend Server
-```powershell
-node server.js
-```
-
-The backend server will start on `http://localhost:3001`
-
-**Keep this terminal open and running!**
-
-### 3. Frontend Setup
-
-#### 3.1. Open New Terminal and Navigate to Frontend Directory
-Open a new PowerShell/Command Prompt window:
-```powershell
-cd "C:\Users\nithy\Downloads\assignment2\frontend"
-```
-
-#### 3.2. Install Frontend Dependencies
-```powershell
-npm install
-```
-
-#### 3.3. Start Frontend Development Server
-```powershell
-npm run dev
-```
-
-The frontend will start on `http://localhost:3000`
-
-### 4. Access the Application
-
-Once both servers are running:
-
-- **Main Application**: [http://localhost:3000](http://localhost:3000)
-- **Backend API**: [http://localhost:3001](http://localhost:3001)
-
-## First Time Setup
-
-### Creating an Admin User
-
-1. Open your browser and go to `http://localhost:3000`
-2. Click "Register" to create a new account
-3. Fill in the registration form:
-   - **Name**: Must be 20-60 characters (e.g., "System Administrator Account")
-   - **Email**: Use `admin@example.com` or any email
-   - **Password**: Must be 8-16 chars with uppercase + special char (e.g., "Admin123!")
-   - **Address**: Any address
-   - **Role**: Select "Admin" from dropdown
-
-### Demo Accounts
-
-You can create these accounts for testing:
-
-| Role | Name | Email | Password | 
-|------|------|-------|----------|
-| Admin | System Administrator Account | admin@example.com | Admin123! |
-| Store Owner | Store Owner Account Demo | owner@example.com | Owner123! |
-| Normal User | Regular User Account Demo | user@example.com | User123! |
+| Role | Email | Password |
+|------|-------|----------|
+| Admin | admin@example.com | Admin123! |
+| Store Owner | owner@example.com | Owner123! |
+| Normal User | user@example.com | User123! |
 
 ## API Endpoints
 
@@ -250,16 +177,16 @@ You can create these accounts for testing:
    - Check if `.env` file exists with JWT_SECRET
 
 3. **"CORS policy error"**
-   - Ensure backend server started before frontend
+   - Ensure backend server started before rateflow-frontend
    - Check both servers are running on correct ports
 
 4. **"Database locked" errors**
    - Close any SQLite browser tools
    - Restart the backend server
 
-5. **Frontend won't load**
+5. **rateflow-frontend won't load**
    ```powershell
-   cd frontend
+   cd rateflow-frontend
    rm -rf .next
    npm run dev
    ```
@@ -272,19 +199,19 @@ You can create these accounts for testing:
 
 2. **Restart Backend:**
    ```powershell
-   cd "backend-folder\backend"
+   cd "rateflow-backend\server"
    node server.js
    ```
 
-3. **Restart Frontend:**
+3. **Restart rateflow-frontend:**
    ```powershell
-   cd "frontend"
+   cd "rateflow-frontend"
    npm run dev
    ```
 
 4. **Check both are running:**
    - Backend: http://localhost:3001
-   - Frontend: http://localhost:3000
+   - rateflow-frontend: http://localhost:3000
 
 ## Database Schema
 
@@ -333,241 +260,19 @@ CREATE TABLE ratings (
 );
 ```
 
-## Quick Start Summary
-
-### Terminal 1 (Backend)
-```powershell
-cd "C:\Users\nithy\Downloads\assignment2\backend-folder\backend"
-node server.js
-```
-
-### Terminal 2 (Frontend)
-```powershell
-cd "C:\Users\nithy\Downloads\assignment2\frontend"
-npm run dev
-```
-
-### Then open: http://localhost:3000
-
 ---
 
-## Success! 🎉
+## Summary
 
-Your Store Rating Application is now running with:
+StoreReview is a complete full-stack application featuring:
 
-✅ **Frontend** - Modern Next.js interface  
-✅ **Backend** - Robust Node.js API  
-✅ **Database** - MySQL with relational structure
-✅ **Authentication** - JWT-based security  
-✅ **Admin Dashboard** - Real-time management panel  
-✅ **Rating System** - Full CRUD operations  
-✅ **User Management** - Role-based access control  
+✅ Modern Next.js frontend with TypeScript  
+✅ Express.js REST API backend  
+✅ SQLite database with proper schema  
+✅ JWT authentication & role-based access  
+✅ Real-time admin dashboard  
+✅ Complete CRUD operations  
+✅ Responsive design with modern UI  
 
-**Happy Rating! ⭐**
+**Perfect for interviews and portfolio projects!** 🚀
 
----
-
-## 📋 FULLSTACK INTERN CODING CHALLENGE COMPLIANCE
-
-This project **FULLY IMPLEMENTS** all requirements from the FullStack Intern Coding Challenge specification:
-
-### ✅ **Tech Stack Requirements**
-- **✓ Backend Framework**: Express.js (Node.js/Express)
-- **✓ Database**: MySQL (relational database management system)
-- **✓ Frontend**: React.js (Next.js 14 - React framework)
-
-### ✅ **Core Application Requirements**
-- **✓ Web application for store rating submissions (1-5 scale)**
-- **✓ Single login system for all users**
-- **✓ Role-based access control with different functionalities**
-- **✓ User registration page for normal users**
-
-### ✅ **User Roles Implementation**
-
-#### 1. **System Administrator** ✓ FULLY IMPLEMENTED
-- **✓ Add new stores, normal users, and admin users**
-- **✓ Dashboard displaying:**
-  - ✓ Total number of users (real-time count)
-  - ✓ Total number of stores (real-time count) 
-  - ✓ Total number of submitted ratings (real-time count)
-  - ✓ **BONUS**: Average rating calculation
-- **✓ Add new users with required details:**
-  - ✓ Name (20-60 characters validation)
-  - ✓ Email (proper validation)
-  - ✓ Password (8-16 chars, uppercase + special char)
-  - ✓ Address (max 400 characters)
-  - ✓ **BONUS**: Role selection
-- **✓ View store listings with:**
-  - ✓ Name, Email, Address, Rating
-  - ✓ **BONUS**: Store images, categories, descriptions
-- **✓ View user listings with:**
-  - ✓ Name, Email, Address, Role
-  - ✓ Store Owner ratings displayed when applicable
-- **✓ Apply filters on all listings** (Name, Email, Address, Role)
-- **✓ View detailed user information including Store Owner ratings**
-- **✓ Logout functionality**
-- **✓ BONUS FEATURES:**
-  - ✓ Real-time updates (auto-refresh every 30 seconds)
-  - ✓ Manual refresh button
-  - ✓ Sortable tables with column headers
-  - ✓ Advanced search and filtering
-
-#### 2. **Normal User** ✓ FULLY IMPLEMENTED
-- **✓ Sign up and login to platform**
-- **✓ Signup form with all required fields:**
-  - ✓ Name (20-60 characters validation)
-  - ✓ Email (proper validation)
-  - ✓ Address (max 400 characters)
-  - ✓ Password (8-16 chars, uppercase + special char)
-- **✓ Update password after logging in**
-- **✓ View list of all registered stores**
-- **✓ Search stores by Name and Address**
-- **✓ Store listings display:**
-  - ✓ Store Name
-  - ✓ Address
-  - ✓ Overall Rating
-  - ✓ User's Submitted Rating
-  - ✓ Option to submit rating
-  - ✓ Option to modify submitted rating
-  - ✓ **BONUS**: Store images, categories, descriptions
-- **✓ Submit ratings (1-5) for individual stores**
-- **✓ Edit/modify existing ratings**
-- **✓ Personal dashboard to view submitted ratings**
-- **✓ Logout functionality**
-
-#### 3. **Store Owner** ✓ FULLY IMPLEMENTED
-- **✓ Login to platform**
-- **✓ Update password after logging in**
-- **✓ Dashboard functionalities:**
-  - ✓ View list of users who rated their store
-  - ✓ See average rating of their store
-  - ✓ **BONUS**: Manage store information
-  - ✓ **BONUS**: View detailed rating comments
-- **✓ Logout functionality**
-
-### ✅ **Form Validations** - ALL IMPLEMENTED
-- **✓ Name**: Min 20 characters, Max 60 characters
-- **✓ Address**: Max 400 characters
-- **✓ Password**: 8-16 characters, uppercase + special character
-- **✓ Email**: Standard email validation rules
-- **✓ BONUS**: Real-time validation with error messages
-- **✓ BONUS**: Character counters for length limits
-
-### ✅ **Additional Requirements**
-- **✓ All tables support sorting** (ascending/descending)
-  - ✓ Clickable column headers
-  - ✓ Visual sort indicators (up/down arrows)
-  - ✓ Multi-level sorting capability
-- **✓ Best practices followed:**
-  - ✓ Frontend: Modern React with TypeScript, component architecture
-  - ✓ Backend: RESTful API, proper error handling, authentication
-  - ✓ Security: JWT tokens, password hashing, input validation
-- **✓ Database schema follows best practices:**
-  - ✓ Proper foreign key relationships
-  - ✓ Normalized table structure
-  - ✓ Appropriate data types and constraints
-  - ✓ Timestamps for audit trails
-
-### 🚀 **BONUS FEATURES IMPLEMENTED**
-
-#### **Enhanced Admin Dashboard**
-- **Real-time Statistics**: Auto-refreshing dashboard every 30 seconds
-- **Manual Refresh**: Instant data refresh button
-- **Advanced Filtering**: Multiple filter combinations
-- **Export Capabilities**: Data management features
-- **User Status Management**: Active/inactive user control
-
-#### **Enhanced User Experience**
-- **Modern UI/UX**: Beautiful, responsive design with animations
-- **Search & Filter**: Advanced search across multiple fields
-- **Image Support**: Store images with fallback placeholders
-- **Rating Analytics**: Average rating calculations
-- **Profile Management**: Complete user profile editing
-
-#### **Technical Excellence**
-- **TypeScript**: Full type safety across frontend
-- **Modern React**: Next.js 14 with App Router
-- **Component Library**: Shadcn/ui for consistent design
-- **Responsive Design**: Mobile-first approach
-- **Error Handling**: Comprehensive error management
-- **Security**: JWT authentication, password hashing, CORS protection
-
-### 📊 **Database Schema Excellence**
-
-**Users Table** - Fully compliant with additional enhancements:
-```sql
-CREATE TABLE users (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL,           -- 20-60 chars validation
-    email TEXT UNIQUE NOT NULL,   -- Email validation
-    password TEXT NOT NULL,       -- 8-16 chars, uppercase + special
-    address TEXT,                 -- Max 400 chars
-    role TEXT DEFAULT 'normal_user', -- admin/store_owner/normal_user
-    status TEXT DEFAULT 'active',    -- BONUS: status management
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-);
-```
-
-**Stores Table** - Enhanced beyond requirements:
-```sql
-CREATE TABLE stores (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    user_id INTEGER,              -- Links to store owner
-    name TEXT NOT NULL,
-    address TEXT NOT NULL,
-    phone TEXT,                   -- BONUS field
-    email TEXT,                   -- BONUS field
-    category TEXT,                -- BONUS field
-    description TEXT,             -- BONUS field
-    status TEXT DEFAULT 'active', -- BONUS field
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users (id)
-);
-```
-
-**Ratings Table** - Perfect implementation:
-```sql
-CREATE TABLE ratings (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    store_id INTEGER NOT NULL,
-    user_id INTEGER NOT NULL,
-    rating INTEGER NOT NULL CHECK (rating >= 1 AND rating <= 5), -- 1-5 validation
-    comment TEXT,                 -- Optional comments
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (store_id) REFERENCES stores (id),
-    FOREIGN KEY (user_id) REFERENCES users (id)
-);
-```
-
-### 🎯 **Challenge Requirements vs Implementation**
-
-| Requirement | Status | Implementation Details |
-|-------------|--------|------------------------|
-| Express.js Backend | ✅ **IMPLEMENTED** | Full REST API with Express.js |
-| React Frontend | ✅ **IMPLEMENTED** | Next.js 14 (React framework) |
-| PostgreSQL/MySQL | ✅ **IMPLEMENTED** | MySQL (relational database) |
-| User Registration | ✅ **IMPLEMENTED** | Complete signup with validation |
-| Role-based Access | ✅ **IMPLEMENTED** | 3 roles with different permissions |
-| Store Rating (1-5) | ✅ **IMPLEMENTED** | Star rating system with validation |
-| Admin Dashboard | ✅ **ENHANCED** | Real-time stats + management |
-| User Management | ✅ **IMPLEMENTED** | Full CRUD with filtering |
-| Store Listings | ✅ **ENHANCED** | Search, filter, sort capabilities |
-| Form Validations | ✅ **IMPLEMENTED** | All specified validations + more |
-| Table Sorting | ✅ **IMPLEMENTED** | All tables sortable |
-| Best Practices | ✅ **EXCEEDED** | Modern architecture + security |
-
-### 🏆 **FINAL VERDICT: REQUIREMENTS FULLY MET + EXCEEDED**
-
-This Store Rating Application **COMPLETELY FULFILLS** all requirements from the FullStack Intern Coding Challenge and includes numerous bonus features that demonstrate advanced development skills.
-
-**Key Achievements:**
-- ✅ **100% Requirement Compliance**
-- 🚀 **Enhanced with Modern Tech Stack**
-- 🎨 **Professional UI/UX Design**
-- 🔒 **Enterprise-level Security**
-- 📱 **Mobile-responsive Interface**
-- ⚡ **Real-time Data Updates**
-- 🛡️ **Comprehensive Error Handling**
-- 📊 **Advanced Analytics Dashboard**
-
-**This project is ready for production deployment and exceeds intern-level expectations!**

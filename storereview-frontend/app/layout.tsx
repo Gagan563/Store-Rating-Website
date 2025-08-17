@@ -16,9 +16,9 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
-  title: "Store Rating System",
-  description: "Multi-role store rating and management platform",
-  generator: "v0.app",
+  title: "StoreReview - Store Rating & Review Platform",
+  description: "Modern store rating and review application with real-time analytics and management",
+  generator: "Next.js",
 }
 
 export default function RootLayout({

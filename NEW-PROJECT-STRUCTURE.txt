@@ -1,0 +1,18 @@
+RateFlow-Application/
+├── rateflow-backend/           # Express.js backend server
+│   └── server/                 # Main server application
+│       ├── server.js           # Main server file
+│       ├── package.json        # Backend dependencies
+│       └── .env               # Environment variables
+├── rateflow-frontend/         # Next.js frontend application
+│   ├── app/                   # Next.js 14 App Router
+│   ├── components/            # Reusable UI components
+│   ├── lib/                   # Utility functions and API
+│   └── package.json           # Frontend dependencies
+├── docs/                      # Documentation
+│   ├── README.md              # Main documentation
+│   ├── MYSQL-SETUP-GUIDE.md   # Database setup guide
+│   └── CONTRIBUTING.md        # Contribution guidelines
+├── rateflow-workspace.json    # Project configuration
+├── rateflow.code-workspace    # VS Code workspace
+└── .env.example              # Environment template
