@@ -1,4 +1,10 @@
 services:
+  # PostgreSQL Database
+  - type: postgres
+    name: storereview-database
+    plan: free
+    version: "16"
+
   # Backend API Service
   - type: web
     name: storereview-backend
@@ -11,6 +17,11 @@ services:
         value: your_super_secure_jwt_secret_key_here_12345_production
       - key: NODE_ENV
         value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          type: postgres
+          name: storereview-database
+          property: connectionString
       - key: FRONTEND_URL
         fromService:
           type: web
